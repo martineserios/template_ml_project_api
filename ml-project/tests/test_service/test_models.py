@@ -1,10 +1,10 @@
 
 import pytest
 
-from fastapi_skeleton.core import config
-from fastapi_skeleton.models.payload import HousePredictionPayload
-from fastapi_skeleton.models.prediction import HousePredictionResult
-from fastapi_skeleton.services.models import HousePriceModel
+from app.core import config
+from app.models.input import InputModel
+from app.models.output import OutputModel
+from app.services.models import Model
 
 
 # def test_prediction(test_client) -> None:

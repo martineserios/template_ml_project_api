@@ -4,7 +4,7 @@ from starlette.config import Config
 from starlette.datastructures import Secret
 
 APP_VERSION = "0.0.1"
-APP_NAME = "API Pago-Pasado"
+APP_NAME = "FastAPI App"
 API_PREFIX = "/api"
 
 config = Config(".env")

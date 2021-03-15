@@ -5,7 +5,6 @@ logger.add("log/log.log", rotation="1 week")
 
 from fastapi import FastAPI#, Body
 # from pydantic import BaseModel, Field
-from fastapi import FastAPI
 
 from app.api.routes.router import api_router
 from app.core.config import (API_PREFIX, APP_NAME, APP_VERSION,

@@ -7,14 +7,14 @@ from loguru import logger
 
 from app.core.config import PREDICT_MODEL_PATH
 from app.core.config import PRE_PROC_MODEL_PATH
-from app.services.models import AnswerClassifierModel
+from app.services.models import Model
 
 
 def _startup_model(app: FastAPI) -> None:
     predict_model_path = PREDICT_MODEL_PATH
     pre_proc_model_path = PRE_PROC_MODEL_PATH
     
-    model_instance = AnswerClassifierModel(predict_model_path, pre_proc_model_path)
+    model_instance = Model(predict_model_path, pre_proc_model_path)
 
     app.state.model = model_instance
 
