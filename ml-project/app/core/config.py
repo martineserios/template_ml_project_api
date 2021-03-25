@@ -9,8 +9,10 @@ API_PREFIX = "/api"
 
 config = Config(".env")
 
-API_KEY: Secret = config("API_KEY", cast=Secret, default= 'd24a348b-e6af-402b-8f78-26c261c2a1bf')
-IS_DEBUG: bool = config("IS_DEBUG", cast=bool, default=True)
+API_KEY: Secret = config("API_KEY", cast=Secret)#, default= '')
+IS_DEBUG: bool = config("IS_DEBUG", cast=bool)#, default=True)
+MODELS_PATH: str = config("MODELS_PATH", cast=str)
 
-PREDICT_MODEL_PATH: str = config("DEFAULT_MODEL_PATH", default='/app/app/trained_models/classLSVC_p.pickle')
-PRE_PROC_MODEL_PATH: str = config("DEFAULT_MODEL_PATH", default='/app/app/trained_models/TfidfVectorizer_p.pickle')
+
+PREDICT_MODEL_PATH: str = f'{MODELS_PATH}/classLSVC_p.pickle'
+PRE_PROC_MODEL_PATH: str = f'{MODELS_PATH}/TfidfVectorizer_p.pickle'

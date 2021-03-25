@@ -1,0 +1,17 @@
+version: '3'
+services:
+    api:
+        env_file:
+            - .env
+        build: .
+        ports:
+            - ${PORT}:80
+        restart: always
+        volumes:
+               - ${PATH_LOG}:/app/log
+        deploy:
+          resources:
+             limits:     
+                memory: ${MEM}
+                cpus: "${CPUs}"
+

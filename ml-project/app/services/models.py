@@ -36,7 +36,7 @@ class Model(object):
             # self.model = joblib.load(self.path)
 
     def _pre_process(self, input: InputModel) -> str:
-        logger.debug("Pre-processing payload.")
+        logger.debug("Pre-processing input.")
         
         def get_clean(x):
             # some code
