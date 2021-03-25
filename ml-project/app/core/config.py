@@ -1,13 +1,13 @@
-
-
 from starlette.config import Config
 from starlette.datastructures import Secret
 
-APP_VERSION = "0.0.1"
-APP_NAME = "FastAPI App"
+config = Config(".env")
+
+
+APP_VERSION: str = config("APP_VERSION", cast=str)
+APP_NAME: str = config("APP_NAME", cast=str)
 API_PREFIX = "/api"
 
-config = Config(".env")
 
 API_KEY: Secret = config("API_KEY", cast=Secret)#, default= '')
 IS_DEBUG: bool = config("IS_DEBUG", cast=bool)#, default=True)

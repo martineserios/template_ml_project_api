@@ -34,7 +34,7 @@ services:
         command: mlflow-db:${DB_PORT}   
 
     mlflow-server:
-        build: ./mlflow2
+        build: ./mlflow
         ports:
             - ${SERVER_PORT}:${SERVER_PORT}
         environment:
@@ -48,7 +48,7 @@ services:
         volumes:
                - "${MLFLOW_ARTIFACT_ROOT}:${MLFLOW_ARTIFACT_ROOT}"
     mlflow-ui:
-        build: ./mlflow2
+        build: ./mlflow
         ports:
             - ${UI_PORT}:${UI_PORT}
         environment:
