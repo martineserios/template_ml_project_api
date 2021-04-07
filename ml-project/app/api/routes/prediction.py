@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
+import time
+from loguru import logger
 
 from app.core import security
 from app.models.input import InputModel
@@ -15,8 +17,11 @@ def post_predict(
     authenticated: bool = True,#Depends(security.validate_request),
     input: InputModel = None
 ) -> OutputModel:
+    start_time = time.time()
 
     model: Model = request.app.state.model
     output: OutputModel = model.predict(input)
+
+    logger.info("PREDICTION TIME: %s seconds." % (time.time() - start_time))
 
     return output

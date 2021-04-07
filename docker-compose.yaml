@@ -13,5 +13,9 @@ services:
           resources:
              limits:     
                 memory: ${MEM}
+<<<<<<< Updated upstream
                 cpus: "${CPUs}"
 
+=======
+                cpus: "${CPUs}"
+>>>>>>> Stashed changes
