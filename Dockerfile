@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 COPY ./ml-project/app /app/app
 
 
-EXPOSE 5340
+EXPOSE ${PORT}

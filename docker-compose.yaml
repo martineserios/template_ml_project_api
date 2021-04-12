@@ -5,7 +5,7 @@ services:
             - .env
         build: .
         ports:
-            - ${PORT}:80
+            - ${PORT}:${PORT}
         restart: always
         volumes:
                - ${PATH_LOG}:/app/log

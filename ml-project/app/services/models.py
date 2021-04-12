@@ -8,8 +8,8 @@ import numpy as np
 from loguru import logger
 
 from app.core.messages import NOT_VALID_ANSWER
-from app.models.input import InputModel
-from app.models.output import OutputModel
+from app.templates.input import InputTemplate
+from app.templates.output import OutputTemplate
 
 
 
@@ -35,7 +35,7 @@ class Model(object):
             self.pre_proc_model = unpickler.load()
             # self.model = joblib.load(self.path)
 
-    def _pre_process(self, input: InputModel) -> str:
+    def _pre_process(self, input: InputTemplate) -> str:
         logger.debug("Pre-processing input.")
         
         def get_clean(x):
@@ -49,10 +49,10 @@ class Model(object):
         return features
 
 
-    def _post_process(self, out1, out2) -> OutputModel:
+    def _post_process(self, out1, out2) -> OutputTemplate:
         logger.debug("Post-processing prediction.")
         
-        output = OutputModel(
+        output = OutputTemplate(
                 out1=out1[0],
                 out2=out2[0]
                 )
@@ -67,7 +67,7 @@ class Model(object):
         return out1, out2
 
 
-    def predict(self, input: InputModel) -> OutputModel:
+    def predict(self, input: InputTemplate) -> OutputTemplate:
         if input is None:
             raise ValueError(NOT_VALID_ANSWER.format(input))
 
