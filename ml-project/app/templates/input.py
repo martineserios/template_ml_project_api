@@ -2,5 +2,5 @@
 from pydantic import BaseModel
 
 
-class InputModel(BaseModel):
+class InputTemplate(BaseModel):
     input:str
