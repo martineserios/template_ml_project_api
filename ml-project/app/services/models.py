@@ -42,7 +42,7 @@ class Model(object):
             # some code
             return x
 
-        interim = get_clean(input.input)
+        interim = get_clean(input.answer)
         logger.info(interim)
         features = self.pre_proc_model.transform([interim])
 
@@ -53,8 +53,8 @@ class Model(object):
         logger.debug("Post-processing prediction.")
         
         output = OutputTemplate(
-                out1=out1[0],
-                out2=out2[0]
+                categ=out1[0],
+                categ_prob=out2[0]
                 )
         return output
 
@@ -73,9 +73,7 @@ class Model(object):
 
         interim = self._pre_process(input)
         out1, out2 = self._predict(interim)
-        logger.info((out1, out2))
+        # logger.info((out1, out2))
         output = self._post_process(out1, out2)
-        
-        logger.log("SAVE", (input.input, (out1[0], out2[0])))
-        
+                
         return output
