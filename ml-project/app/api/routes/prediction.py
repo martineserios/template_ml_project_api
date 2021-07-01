@@ -35,14 +35,8 @@ def post_predict(
     model: Model = request.app.state.model
     output: OutputTemplate = model.predict(input)
 
-<<<<<<< HEAD
-    logger.debug(f"Campaña: '{input.campaign_name}' | id_survey_response: '{input.id_survey_response}' | PREDICTION TIME: {time.time() - start_time} seconds.")
-    logger.debug(f"Campaña: '{input.campaign_name}' | id_survey_response: '{input.id_survey_response}' | SAVE: answer: {input.answer}, categ: {output.categ}, categ_proba: {output.categ_prob}")
-    
-=======
 
     logger.debug(f"Campaña: '{input.campaign_name}' | id_survey_response: '{input.id_survey_response}' | PREDICTION TIME: {time.time() - start_time} seconds.")
     logger.debug(f"Campaña: '{input.campaign_name}' | id_survey_response: '{input.id_survey_response}' | SAVE: answer: {input.answer}, categ: {output.categ}, categ_proba: {output.categ_prob}")
 
->>>>>>> b9fc5da560209a07695a0ab181c701e416b4aead
     return output
