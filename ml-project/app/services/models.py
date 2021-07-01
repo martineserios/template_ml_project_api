@@ -75,9 +75,5 @@ class Model(object):
         out1, out2 = self._predict(interim)
         # logger.info((out1, out2))
         output = self._post_process(out1, out2)
-<<<<<<< HEAD
         
-=======
-                
->>>>>>> b9fc5da560209a07695a0ab181c701e416b4aead
         return output
