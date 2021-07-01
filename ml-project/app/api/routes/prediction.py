@@ -1,13 +1,10 @@
 from fastapi import APIRouter, Depends
 from starlette.requests import Request
 import time
-<<<<<<< HEAD
 ###
 from app.logging import logger
 # Gets or creates a logger
 logger = logger.getChild(__name__)  
-=======
->>>>>>> b9fc5da560209a07695a0ab181c701e416b4aead
 
 from app.core import security
 from app.templates.input import InputTemplate
