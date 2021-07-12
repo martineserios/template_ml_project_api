@@ -5,14 +5,23 @@ from typing import List
 import joblib
 import pickle
 import numpy as np
-from loguru import logger
+######
+from app.logging import logger
+# Gets or creates a logger
+logger = logger.getChild(__name__)      
 
 from app.core.messages import NOT_VALID_ANSWER
 from app.templates.input import InputTemplate
 from app.templates.output import OutputTemplate
 
 
+THRESHOLD=0.95
 
+CATEGORY_MAP = {
+    0.0: 'negativo',
+    1.0: 'positivo',
+    2.0: 'neutral'
+}
 
 class Model(object):
 
@@ -52,9 +61,15 @@ class Model(object):
     def _post_process(self, out1, out2) -> OutputTemplate:
         logger.debug("Post-processing prediction.")
         
+        if out2[0] < THRESHOLD:
+            out1[0] = 2.0
+
+        category = CATEGORY_MAP[out1[0]]
+        category_proba = out2[0]
+
         output = OutputTemplate(
-                categ=out1[0],
-                categ_prob=out2[0]
+                categ=category,
+                categ_prob=category_proba
                 )
         return output
 

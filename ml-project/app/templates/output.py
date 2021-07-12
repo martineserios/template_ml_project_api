@@ -4,5 +4,5 @@ from pydantic import BaseModel
 
 
 class OutputTemplate(BaseModel):
-    categ:float
+    categ:str
     categ_prob:float
