@@ -9,7 +9,7 @@ from app.services.models import CATEGORY_MAP
 router = APIRouter()
 
 
-@router.post("/categories", response_model=ModelCategories, name="categories")
+@router.get("/categories", response_model=ModelCategories, name="categories")
 def get_categories(
     # request: Request,
     authenticated: bool = True,#Depends(security.validate_request),
