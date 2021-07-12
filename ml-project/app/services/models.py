@@ -61,11 +61,11 @@ class Model(object):
     def _post_process(self, out1, out2) -> OutputTemplate:
         logger.debug("Post-processing prediction.")
         
-        if out2[0] < THRESHOLD:
-            out1[0] = 2.0
+        if out2 < THRESHOLD:
+            out1 = 2.0
 
-        category = CATEGORY_MAP[out1[0]]
-        category_proba = out2[0]
+        category = CATEGORY_MAP[out1]
+        category_proba = out2
 
         output = OutputTemplate(
                 categ=category,
@@ -76,8 +76,8 @@ class Model(object):
 
     def _predict(self, features: str) -> tuple:
         logger.debug("Predicting.")
-        out1 = self.predict_model.predict(features)
-        out2 = self.predict_model.predict_proba(features).max(axis=1)
+        out1 = self.predict_model.predict(features)[0]
+        out2 = self.predict_model.predict_proba(features).max(axis=1)[0]
         
         return out1, out2
 
