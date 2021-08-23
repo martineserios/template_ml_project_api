@@ -1,10 +1,12 @@
-from loguru import logger
-logger.level("SAVE", no=38, color="<yellow>")
-logger.add("log/log.log", rotation="1 week")
-# from typing import Optional
-
 from fastapi import FastAPI#, Body
 # from pydantic import BaseModel, Field
+
+
+# Disable heartbeat log
+import logging as log
+log.getLogger('uvicorn.access').handlers = []
+log.getLogger('uvicorn.access').propagate = False
+
 
 from app.api.routes.router import api_router
 from app.core.config import (API_PREFIX, APP_NAME, APP_VERSION,
