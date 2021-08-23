@@ -1,0 +1,17 @@
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 90
+  targetMemoryUtilizationPercentage: 90
+
+secrets: {}
+
+configMap: {}
+
+ingress:
+  hosts:
+    - host: template_ml_project.k8s.froneus.int
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
