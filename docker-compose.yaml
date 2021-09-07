@@ -5,12 +5,12 @@ services:
             - .env
         build: .
         ports:
-            - ${PORT}:${PORT}
+            - 80:80
         restart: always
-        volumes:
-               - ${PATH_LOG}:/app/log
+        # volumes:
+            #    - ${PATH_LOG}:/app/log
         deploy:
           resources:
              limits:     
-                memory: ${MEM}
-                cpus: "${CPUs}"
+                memory: 512m
+                cpus: "2"
