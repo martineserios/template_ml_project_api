@@ -1,0 +1,34 @@
+image:
+  pullPolicy: Always
+
+imagePullSecrets: []
+
+ports:
+  - name: http
+    containerPort: 80
+    protocol: TCP
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+
+resources: 
+  limits:
+    cpu: 2
+    memory: 1.8Gi
+  requests:
+    cpu: 100m
+    memory: 1.5Gi
+
+livenessProbe:
+  httpGet:
+    path: /api/health/heartbeat
+    port: http
+readinessProbe:
+  httpGet:
+    path: /api/health/heartbeat
+    port: http
+
